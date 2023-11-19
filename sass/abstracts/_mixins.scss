@@ -1,0 +1,42 @@
+// MEDIA QUERY MANAGER
+/*
+
+0 - 380px:       PHONE EXTRA SMALL
+380px - 450px:	 PHONE SMALL
+450px - 576px:	 PHONE
+576px - 768px:	 TABLET PORTRAIT
+768px - 992px:	 TABLET LANDSCAPE
+992px - 1284px:	 LAPTOP
+2000px: BIG-DESKTOP
+
+$breakpoint argument choices:
+-phone-extra-small
+-phone-small
+-phone
+-tab-port
+-tab-land
+-laptop
+-big-desktop
+
+1em = 16px
+ */
+
+$breakpoints: (
+		phone-extra-small: 23.75em, // 380px
+		phone-small: 28.12em,      // 450px
+		phone: 36em,               // 576px
+		tab-port: 48em,            // 768px
+		tab-land: 62em,            // 992px
+		laptop: 80.25em,           // 1284px
+		big-desktop: 125em,        // 2000px
+);
+
+@mixin respond($breakpoint) {
+	$breakpoint-value: map-get($breakpoints, $breakpoint);
+	@media only screen and (max-width: $breakpoint-value) { @content };
+}
+
+@mixin respondMin($breakpoint) {
+	$breakpoint-value: map-get($breakpoints, $breakpoint);
+	@media only screen and (min-width: $breakpoint-value) { @content };
+}

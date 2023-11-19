@@ -1,0 +1,164 @@
+.header {
+    background-color: $color-black;
+    height: 100vh;
+    padding: 11rem 0;
+    
+    @include respond(tab-land) {
+        height: auto;
+        padding: 11rem 0 3.2rem;
+    }
+    
+    .container {
+        position: relative;
+        z-index: 2;
+    }
+    
+    &.header--small {
+        position: relative;
+        padding: 27rem 0 26rem;
+        height: auto;
+        background-size: cover;
+        
+        @include respond(tab-land) {
+            padding: 13.9rem 0 8rem;
+        }
+        
+        @include respond(tab-port) {
+            background-position: center;
+        }
+        
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-image: linear-gradient(99deg, rgba(0, 0, 0, 0.90) 48.58%, rgba(0, 0, 0, 0.00) 100%);
+        }
+    }
+    
+    &.header--blog {
+        background-image: url("../img/blog-background.jpeg");
+        
+        .heading-primary {
+            max-width: 69.5rem;
+        }
+    }
+    
+    &.header--about {
+        background-image: url("../img/about-background.jpeg");
+        
+        .heading-primary {
+            max-width: 64rem;
+        }
+        
+        .header-paragraph {
+            max-width: 58.4rem;
+        }
+    }
+    
+    &.header--contact {
+        .header-paragraph {
+            max-width: 58.4rem;
+        }
+        
+        .header__wrap {
+            @include respond(tab-land) {
+                gap: .8rem;
+            }
+        }
+        
+        .header__item {
+            width: auto;
+        }
+    }
+    
+    .container {
+        height: 100%;
+    }
+    
+    &__wrap {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 7.7rem;
+        
+        @include respond(tab-land) {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 5.8rem;
+        }
+    }
+    
+    &__item {
+        width: 100%;
+        
+        &:first-child {
+            @include respond(tab-land) {
+                max-width: unset;
+            }
+        }
+        
+        &:last-child {
+            @include respond(tab-land) {
+                max-width: unset;
+            }
+            
+            img {
+                @include respond(tab-land) {
+                    max-width: 72rem;
+                    margin: 0 auto;
+                }
+            }
+        }
+    }
+    
+    &__buttons {
+        display: flex;
+        gap: 2rem;
+        
+        @include respond(phone) {
+            flex-direction: column;
+            gap: 1.6rem;
+        }
+        
+        .btn {
+            width: 100%;
+        }
+    }
+    
+    &__text {
+        padding: 4rem;
+        background-color: $color-gray-dark-2;
+        max-width: 48.1rem;
+        min-width: 48.1rem;
+        
+        @include respond(tab-land) {
+            min-width: unset;
+        }
+        
+        span {
+            display: grid;
+            width: 24rem;
+            height: .2rem;
+            background-image: linear-gradient(90deg, $color-primary-1 0%, $color-primary-2 89.44%, $color-primary-3 145.3%, $color-primary-4 213.62%);
+        }
+        
+        h6 {
+            color: $color-gray-light-3;
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 2.24rem;
+            margin: 2.4rem 0 .4rem;
+        }
+        
+        address,
+        a {
+            color: $color-white;
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 2.4rem;
+        }
+    }
+}

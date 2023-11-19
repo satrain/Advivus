@@ -1,0 +1,44 @@
+// CONTAINER
+.container {
+	max-width: 124rem;
+	margin: 0 auto;
+	padding: 0 2rem;
+	width: 100%;
+}
+
+.container-fluid-1 {
+	max-width: 157.7rem;
+	margin: 0 0 0 auto;
+	padding: 0 0 0 2rem;
+	width: 100%;
+	
+	@include respondMin(big-desktop) {
+		margin: 0 auto;
+		max-width: 120rem;
+		padding: 0 2rem;
+	}
+	
+	@include respond(tab-land) {
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+}
+
+
+.container-fluid-2 {
+	margin: 0 8.6rem 0 auto;
+	max-width: 149rem;
+	padding: 0 0 0 2rem;
+	width: 100%;
+	
+	@include respondMin(big-desktop) {
+		margin: 0 auto;
+		max-width: 120rem;
+		padding: 0 2rem;
+	}
+	
+	@include respond(tab-land) {
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+}

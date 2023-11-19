@@ -1,0 +1,69 @@
+.btn {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.35rem;
+    padding: 1.8rem 2.4rem;
+    text-transform: uppercase;
+    transition: background .2s linear, border .2s linear, color .2s linear !important;
+    
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+        transition: opacity .2s linear;
+        z-index: -1;
+        background-image: linear-gradient(90deg, $color-primary-1 0%, $color-primary-2 89.44%, $color-primary-3 145.3%, $color-primary-4 213.62%);
+    }
+    
+    &:hover {
+        background-color: transparent !important;
+        
+        &::after {
+            opacity: 1;
+        }
+    }
+}
+
+.btn-primary {
+    color: $color-black;
+    background-color: $color-white;
+}
+
+.btn-secondary {
+    border: .1rem solid $color-white;
+    color: $color-white;
+    
+    &:hover {
+        border: .1rem solid transparent;
+    }
+}
+
+.btn-tertiary {
+    background-color: $color-black;
+    color: $color-white;
+    
+    &:hover {
+        color: $color-black;
+    }
+}
+
+.btn-quaternary {
+    color: $color-black;
+    background-color: $color-white;
+    border: .1rem solid $color-black;
+    
+    &:hover {
+        border: .1rem solid transparent;
+    }
+}

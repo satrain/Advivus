@@ -1,0 +1,149 @@
+.nav {
+    background-color: $color-black;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 3;
+    
+    &__wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 3rem 0;
+        transition: padding .2s linear;
+        
+        @include respond(tab-land) {
+            padding: 1.4rem 0;
+        }
+    
+        &.small {
+            padding: 1rem 0;
+        }
+        
+    }
+    
+    &__logo {
+        display: block;
+        z-index: 1;
+        
+        img {
+            display: block;
+            max-width: 17.3rem;
+            width: 100%;
+            
+            @include respond(tab-land) {
+                max-width: 13rem;
+            }
+        }
+    }
+    
+    &__list {
+        display: flex;
+        gap: 5.6rem;
+        list-style: none;
+        
+        @include respond(tab-land) {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            background-color: $color-black;
+            padding-top: 20vh;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            transform: translateX(100%);
+            transition: transform .4s ease-in;
+        }
+        
+        &.active {
+            transform: translateX(0);
+        }
+    }
+    
+    &__item {
+        
+        @include respond(tab-land) {
+            opacity: 0;
+        }
+        
+        &:nth-last-child(2) {
+            @include respond(tab-land) {
+                flex: 1;
+            }
+        }
+        
+        &:last-child {
+            display: none;
+            
+            .btn-primary {
+                background-color: $color-white;
+                color: $color-black;
+            }
+            
+            @include respond(tab-land) {
+                display: block;
+                padding-bottom: 8rem;
+            }
+        }
+    }
+    
+    &__link {
+        color: $color-gray-light-1;
+        font-size: 1.4rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        letter-spacing: 0.35rem;
+        text-transform: uppercase;
+        transition: color .2s linear;
+        
+        &:hover {
+            color: $color-white;
+        }
+    }
+    
+    &__login {
+        
+        .btn-primary {
+            width: 17.3rem;
+        }
+
+        @include respond(tab-land) {
+            display: none;
+        }
+    }
+    
+    &__burger {
+        display: none;
+        cursor: pointer;
+        
+        @include respond(tab-land) {
+            display: block;
+        }
+        
+        &--line {
+            width: 2.5rem;
+            height: .3rem;
+            background-color: $color-white;
+            margin: .5rem;
+            transition: all .3s ease;
+        }
+        
+        &.toggle {
+            .nav__burger--line-1 {
+                transform: rotate(-45deg) translate(-.5rem, .6rem);
+            }
+            
+            .nav__burger--line-2 {
+                opacity: 0;
+            }
+            
+            .nav__burger--line-3 {
+                transform: rotate(45deg) translate(-.5rem, -.6rem);
+            }
+        }
+    }
+}
