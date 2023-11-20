@@ -71,7 +71,7 @@ get_header() ?>
                 </div>
 
                 <div class="start__item">
-                    <img src="img/section-start.jpg" alt="start image">
+                    <img src="<?= get_template_directory_uri() ?>/img/section-start.jpg" alt="start image">
                 </div>
             </div>
         </div>

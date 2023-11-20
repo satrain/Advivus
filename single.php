@@ -1,20 +1,43 @@
 <?php get_header() ?>
 
+<?php 
+
+$latest_post = get_posts( array(
+    'numberposts' => 5,
+    'orderby'     => 'date',
+    'order'       => 'DESC',
+) );
+
+$categories = get_the_category();
+$category_names = array();
+foreach ( $categories as $category ) {
+    $category_names[] = $category->name;
+}
+
+// get all categories of all blog posts
+$categories = get_categories();
+
+$author_id = get_post_field('post_author');
+$author_name = get_the_author_meta('display_name', $author_id);
+$avatar_url = get_avatar_url( $author_id, array( 'size' => 150 ) );
+
+?>
+
 <main>
     <section class="blog_single">
         <div class="container">
             <div class="blog_single__wrap">
                 <div class="blog_single__header">
-                    <img src="img/featured-blog-image.jpg" alt="featured blog image">
+                    <img src="<?= get_the_post_thumbnail_url( get_the_ID(), 'large' ) ?>" alt="featured blog image">
 
                     <div class="blog_single__info">
                         By
                         <span>
-                        Anica Jovanovic
+                        <?= $author_name ?>
                     </span>
                         |
                         <span>
-                        Jan 11, 2021
+                        <?= get_the_date('M j, Y') ?>
                     </span>
                         |
                         <span>
@@ -22,7 +45,7 @@
                     </span>
                         |
                         <span>
-                        Online Marketing
+                        <?= $category_names[0] ?>
                     </span>
                     </div>
                 </div>
@@ -33,72 +56,57 @@
                             <!--  Render Blog Here  -->
 
                             <h1>
-                                Render Blog Here
+                                <?php the_title() ?>
                             </h1>
+                            <?php the_content() ?>
                         </div>
 
                         <div class="blog_single__author">
-                            <img src="img/author.jpg" alt="author of blog">
+                            <img src="<?= $avatar_url ?>" alt="author of blog">
 
                             <div class="blog_single__author__text">
                                 <h4>
-                                    Written by Anica Jovanovic
+                                    Written by <?= $author_name ?>
                                 </h4>
 
                                 <p>
-                                    Anica Jovanovic is an online marketing specialist and copywriter for Advivus. She has worked intensively with SEO and copywriting for several years in the US market and has since worked for an online marketing agency helping clients to succeed with their online marketing efforts.
+                                    <?= $author_name ?> is an online marketing specialist and copywriter for Advivus. She has worked intensively with SEO and copywriting for several years in the US market and has since worked for an online marketing agency helping clients to succeed with their online marketing efforts.
                                 </p>
                             </div>
                         </div>
                     </div>
 
                     <div class="blog_single__recent">
-                        <h3>
-                            Recent Blog Posts
-                        </h3>
+                        <?php if ( $latest_post ): ?>
+                            <h3>
+                                Recent Blog Posts
+                            </h3>
 
-                        <ul>
-                            <li>
-                                <a href="#">
-                                    Affiliate marketing trends – 2021 Edition
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#">
-                                    Best affiliate marketing niches in 2020
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#">
-                                    Increasing brand awareness – How to do it the right way?
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#">
-                                    How to start a successful blog with ease?
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#">
-                                    Affiliate Marketing Scams To Look Out For
-                                </a>
-                            </li>
-                        </ul>
+                            <ul>
+                                <?php foreach($latest_post as $post): setup_postdata( $post ); ?> 
+                                    <li>
+                                        <a href="<?= get_permalink( $post->ID ) ?>">
+                                            <?php the_title() ?>
+                                        </a>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        <?php endif; ?>
 
                         <h3>
                             Categories
                         </h3>
 
                         <ul>
-                            <li>
-                                <a href="#">
-                                    Online Marketing
-                                </a>
-                            </li>
+                            <?php $i=0;
+                            foreach($categories as $category): ?>
+                                <?php if($i > 4): break; endif; ?>
+                                <li>
+                                    <a href="<?= get_category_link($category->term_id) ?>">
+                                        <?= $category->name ?>
+                                    </a>
+                                </li>
+                            <?php $i++; endforeach; ?>
                         </ul>
                     </div>
                 </div>

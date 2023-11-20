@@ -38,7 +38,7 @@
                     Our journey at Advivus isn't merely about maintaining the status quo; it's about shaping the future of affiliate marketing. Our sights are set on the horizon of innovative possibilities. We're not just participants— we’re pioneers dedicated to revolutionizing the world of SaaS and digital products through our unmatched affiliate network.
                 </p>
 
-                <img src="img/section-introduction.jpg" alt="team img">
+                <img src="<?= get_template_directory_uri() ?>/img/section-introduction.jpg" alt="team img">
             </div>
         </div>
     </section>
@@ -56,7 +56,7 @@
 
                 <div class="built__grid">
                     <div class="built__img">
-                        <img src="img/section-build-1.jpg" alt="people">
+                        <img src="<?= get_template_directory_uri() ?>/img/section-build-1.jpg" alt="people">
                     </div>
 
                     <div class="built__text">
@@ -98,13 +98,13 @@
                     </div>
 
                     <div class="built__img">
-                        <img src="img/section-build-2.jpg" alt="people">
+                        <img src="<?= get_template_directory_uri() ?>/img/section-build-2.jpg" alt="people">
                     </div>
                 </div>
 
                 <div class="built__grid">
                     <div class="built__img">
-                        <img src="img/section-build-3.jpg" alt="people">
+                        <img src="<?= get_template_directory_uri() ?>/img/section-build-3.jpg" alt="people">
                     </div>
 
                     <div class="built__text">
@@ -149,7 +149,7 @@
                 </div>
 
                 <div class="success__item">
-                    <img src="img/section-success.jpg" alt="success">
+                    <img src="<?= get_template_directory_uri() ?>/img/section-success.jpg" alt="success">
                 </div>
             </div>
         </div>

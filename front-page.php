@@ -25,7 +25,7 @@
             </div>
 
             <div class="header__item">
-                <img src="img/logo-symbol.png" alt="logo symbol">
+                <img src="<?= get_template_directory_uri() ?>/img/logo-symbol.png" alt="logo symbol">
             </div>
         </div>
     </div>
@@ -57,7 +57,7 @@
                 </div>
 
                 <div class="together__item">
-                    <img src="img/section-together.jpg" alt="together">
+                    <img src="<?= get_template_directory_uri() ?>/img/section-together.jpg" alt="together">
                 </div>
             </div>
         </div>
@@ -77,7 +77,7 @@
                     products campaigns!
                 </p>
 
-                <img src="img/section-acquire.jpg" alt="acquire">
+                <img src="<?= get_template_directory_uri() ?>/img/section-acquire.jpg" alt="acquire">
             </div>
         </div>
     </section>
@@ -157,7 +157,7 @@
                     <div class="empowering__accordion__item">
                         <div class="empowering__accordion__header" data-toggle="active">
                             <div class="empowering__accordion__header__info">
-                                <img src="img/accordion-icon-1.png" alt="accordion icon">
+                                <img src="<?= get_template_directory_uri() ?>/img/accordion-icon-1.png" alt="accordion icon">
 
                                 <div class="empowering__accordion__header__text">
                                     <h5>
@@ -187,7 +187,7 @@
                     <div class="empowering__accordion__item">
                         <div class="empowering__accordion__header" data-toggle="active">
                             <div class="empowering__accordion__header__info">
-                                <img src="img/accordion-icon-2.png" alt="accordion icon">
+                                <img src="<?= get_template_directory_uri() ?>/img/accordion-icon-2.png" alt="accordion icon">
 
                                 <div class="empowering__accordion__header__text">
                                     <h5>
@@ -217,7 +217,7 @@
                     <div class="empowering__accordion__item">
                         <div class="empowering__accordion__header" data-toggle="active">
                             <div class="empowering__accordion__header__info">
-                                <img src="img/accordion-icon-3.png" alt="accordion icon">
+                                <img src="<?= get_template_directory_uri() ?>/img/accordion-icon-3.png" alt="accordion icon">
 
                                 <div class="empowering__accordion__header__text">
                                     <h5>
@@ -247,7 +247,7 @@
                     <div class="empowering__accordion__item">
                         <div class="empowering__accordion__header" data-toggle="active">
                             <div class="empowering__accordion__header__info">
-                                <img src="img/accordion-icon-4.png" alt="accordion icon">
+                                <img src="<?= get_template_directory_uri() ?>/img/accordion-icon-4.png" alt="accordion icon">
 
                                 <div class="empowering__accordion__header__text">
                                     <h5>
@@ -277,7 +277,7 @@
                     <div class="empowering__accordion__item">
                         <div class="empowering__accordion__header" data-toggle="active">
                             <div class="empowering__accordion__header__info">
-                                <img src="img/accordion-icon-5.png" alt="accordion icon">
+                                <img src="<?= get_template_directory_uri() ?>/img/accordion-icon-5.png" alt="accordion icon">
 
                                 <div class="empowering__accordion__header__text">
                                     <h5>
@@ -307,7 +307,7 @@
                     <div class="empowering__accordion__item">
                         <div class="empowering__accordion__header" data-toggle="active">
                             <div class="empowering__accordion__header__info">
-                                <img src="img/accordion-icon-6.png" alt="accordion icon">
+                                <img src="<?= get_template_directory_uri() ?>/img/accordion-icon-6.png" alt="accordion icon">
 
                                 <div class="empowering__accordion__header__text">
                                     <h5>
@@ -362,7 +362,7 @@
                 </div>
 
                 <div class="start__item">
-                    <img src="img/section-start.jpg" alt="start image">
+                    <img src="<?= get_template_directory_uri() ?>/img/section-start.jpg" alt="start image">
                 </div>
             </div>
         </div>
@@ -381,7 +381,7 @@
 
                 <div class="home_blog__grid">
                     <a href="blog-single.html" class="home_blog__item">
-                        <img src="img/blog-image-1.jpg" alt="blog image">
+                        <img src="<?= get_template_directory_uri() ?>/img/blog-image-1.jpg" alt="blog image">
 
                         <h5 class="header-gradient">
                             11 ways to expand your affiliate network
@@ -399,7 +399,7 @@
                     </a>
 
                     <a href="blog-single.html" class="home_blog__item">
-                        <img src="img/blog-image-2.jpg" alt="blog image">
+                        <img src="<?= get_template_directory_uri() ?>/img/blog-image-2.jpg" alt="blog image">
 
                         <h5 class="header-gradient">
                             Easiest way to help you grow on the marketplace
@@ -417,7 +417,7 @@
                     </a>
 
                     <a href="blog-single.html" class="home_blog__item">
-                        <img src="img/blog-image-3.jpg" alt="blog image">
+                        <img src="<?= get_template_directory_uri() ?>/img/blog-image-3.jpg" alt="blog image">
 
                         <h5 class="header-gradient">
                             How to strengthen your team spirit

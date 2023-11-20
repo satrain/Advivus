@@ -21,7 +21,7 @@
         <div class="container">
             <nav class="nav__wrap">
                 <a href="<?= home_url() ?>" class="nav__logo">
-                    <img src="img/logo.png" alt="logo">
+                    <img src="<?= get_template_directory_uri() ?>/img/logo.png" alt="logo">
                 </a>
 
                 <ul class="nav__list">

@@ -25,6 +25,8 @@ function advivus_add_theme_support() {
         'header-text'          => array( 'site-title', 'site-description' ),
     );
     add_theme_support( 'custom-logo', $args );
+
+    add_post_type_support( 'post', 'thumbnail' );
     
 }
 add_action( 'after_setup_theme', 'advivus_add_theme_support' );
@@ -64,5 +66,15 @@ function advivus_enqueue_assets() {
     wp_enqueue_script( 'main-script', get_template_directory_uri() . '/js/script.js', array('jquery'), _S_VERSION, true );
 }
 add_action( 'wp_enqueue_scripts', 'advivus_enqueue_assets' );
+
+function generate_custom_excerpt( $content, $length = 55 ) {
+    $excerpt = strip_tags( $content );
+    $excerpt = explode( ' ', $excerpt );
+    $excerpt = array_slice( $excerpt, 0, $length );
+    $excerpt = implode( ' ', $excerpt );
+    $excerpt = rtrim( $excerpt, ".,!?:;'\"-/" );
+    $excerpt = $excerpt . '...';
+    return $excerpt;
+}
 
 ?>

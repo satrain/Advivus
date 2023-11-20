@@ -1,6 +1,32 @@
 <?php /* Template Name: Blog Template */ 
 get_header() ?>
 
+<?php 
+// get blog latest post
+$latest_post = get_posts( array(
+    'numberposts' => 1,
+    'orderby'     => 'date',
+    'order'       => 'DESC',
+) );
+
+
+// exclude latest post when displaying all the posts (that post is being displayed separately above all posts section)
+$exclude_post_id = ! empty( $latest_post ) ? $latest_post[0]->ID : 0;
+
+// get all blog posts
+$current_page = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
+
+$args = array(
+    'post_type'      => 'post',
+    'posts_per_page' => 6,
+    'paged'          => $current_page,
+    'post__not_in'   => array( $exclude_post_id ),
+);
+
+$blog_posts = new WP_Query( $args );
+
+?>
+
 <header class="header header--small header--blog">
     <div class="container">
         <div class="header__wrap">
@@ -18,19 +44,36 @@ get_header() ?>
 </header>
 
 <main>
+    <?php if ( $latest_post ): ?>
     <section class="featured_blog">
         <div class="container">
+            <?php foreach($latest_post as $post): 
+                
+                setup_postdata( $post );
+                $post_url = get_permalink( $post->ID );
+                $post_date = get_the_date('M j, Y');
+                $categories = get_the_category();
+                $category_names = array();
+                foreach ( $categories as $category ) {
+                    $category_names[] = $category->name;
+                }
+
+                $author_name = get_the_author_meta( 'display_name' );
+                $featured_image_url = get_the_post_thumbnail_url( $post->ID, 'large' );
+
+                $custom_excerpt = generate_custom_excerpt( get_the_content(), 30 );
+            ?>
             <div class="featured_blog__wrap">
-                <img src="img/featured-blog-image.jpg" alt="featured blog">
+                <img src="<?= esc_url( $featured_image_url ) ?>" alt="featured blog">
 
                 <div class="featured_blog__info">
                     By
                     <span>
-                        Anica Jovanovic
+                        <?= $author_name ?>
                     </span>
                     |
                     <span>
-                        Jan 11, 2021
+                        <?= $post_date ?>
                     </span>
                     |
                     <span>
@@ -38,24 +81,26 @@ get_header() ?>
                     </span>
                     |
                     <span>
-                        Online Marketing
+                        <?= $category_names[0] ?>
                     </span>
                 </div>
 
                 <h2 class="heading-blog">
-                    Affiliate marketing trends – 2021 Edition
+                    <?= get_the_title() ?>
                 </h2>
 
                 <p class="paragraph-blog">
-                    2020 was a record-setter year for almost every online business, especially affiliate marketing. So, if you hold the title of an affiliate as we speak, we want to say congrats - 2020 must have been a great year for you! But what awaits us...
+                    <?= $custom_excerpt  ?>
                 </p>
 
-                <a href="blog-single.html" class="btn btn-tertiary">
+                <a href="<?= $post_url ?>" class="btn btn-tertiary">
                     Read FUll Article
                 </a>
             </div>
+            <?php endforeach; ?>
         </div>
     </section>
+    <?php endif; ?>
 
     <section class="more_posts">
         <div class="container">
@@ -63,18 +108,24 @@ get_header() ?>
                 <h2>
                     Read More Blog Posts
                 </h2>
-
                 <div class="more_posts__grid">
-                    <a href="blog-single.html" class="more_posts__item">
-                        <img src="img/blog-image-1.jpg" alt="blog post image">
+                    <?php if( $blog_posts->have_posts() ):
+                    while( $blog_posts->have_posts() ):    
+                    $blog_posts->the_post();
+                    $post_date = get_the_date( 'd/m/Y' );
+                    $featured_image_url = get_the_post_thumbnail_url( get_the_ID(), 'large' );
+                    $post_permalink = get_permalink();
+                    ?>
+                    <a href="<?= $post_permalink ?>" class="more_posts__item">
+                        <img src="<?= $featured_image_url ?>" alt="blog post image">
 
                         <h5 class="header-gradient">
-                            11 ways to expand your affiliate network
+                            <?= get_the_title() ?>
                         </h5>
 
                         <div class="more_posts__item__info">
                             <span>
-                                11/09/2023
+                                <?= $post_date ?>
                             </span>
 
                             <span>
@@ -82,96 +133,23 @@ get_header() ?>
                             </span>
                         </div>
                     </a>
+                    <?php endwhile; 
 
-                    <a href="blog-single.html" class="more_posts__item">
-                        <img src="img/blog-image-2.jpg" alt="blog post image">
+                    // Pagination
+                    $big = 999999999; // need an unlikely integer
 
-                        <h5 class="header-gradient">
-                            Easiest way to help you grow on the marketplace
-                        </h5>
-
-                        <div class="more_posts__item__info">
-                            <span>
-                                23/08/2023
-                            </span>
-
-                            <span>
-                                10 minute read
-                            </span>
-                        </div>
-                    </a>
-
-                    <a href="blog-single.html" class="more_posts__item">
-                        <img src="img/blog-image-3.jpg" alt="blog post image">
-
-                        <h5 class="header-gradient">
-                            How to strengthen your team spirit
-                        </h5>
-
-                        <div class="more_posts__item__info">
-                            <span>
-                                11/09/2023
-                            </span>
-
-                            <span>
-                                5 minute read
-                            </span>
-                        </div>
-                    </a>
-
-                    <a href="blog-single.html" class="more_posts__item">
-                        <img src="img/blog-image-1.jpg" alt="blog post image">
-
-                        <h5 class="header-gradient">
-                            11 ways to expand your affiliate network
-                        </h5>
-
-                        <div class="more_posts__item__info">
-                            <span>
-                                11/09/2023
-                            </span>
-
-                            <span>
-                                5 minute read
-                            </span>
-                        </div>
-                    </a>
-
-                    <a href="blog-single.html" class="more_posts__item">
-                        <img src="img/blog-image-2.jpg" alt="blog post image">
-
-                        <h5 class="header-gradient">
-                            Easiest way to help you grow on the marketplace
-                        </h5>
-
-                        <div class="more_posts__item__info">
-                            <span>
-                                23/08/2023
-                            </span>
-
-                            <span>
-                                10 minute read
-                            </span>
-                        </div>
-                    </a>
-
-                    <a href="blog-single.html" class="more_posts__item">
-                        <img src="img/blog-image-3.jpg" alt="blog post image">
-
-                        <h5 class="header-gradient">
-                            How to strengthen your team spirit
-                        </h5>
-
-                        <div class="more_posts__item__info">
-                            <span>
-                                11/09/2023
-                            </span>
-
-                            <span>
-                                5 minute read
-                            </span>
-                        </div>
-                    </a>
+                    echo '<div class="pagination">';
+                    echo paginate_links( array(
+                        'base'    => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+                        'format'  => '?paged=%#%',
+                        'current' => max( 1, $current_page ),
+                        'total'   => $blog_posts->max_num_pages,
+                    ) );
+                    echo '</div>';
+                    
+                    wp_reset_postdata();
+                        
+                    endif; ?>
                 </div>
 
                 <div class="more_posts__pagination">

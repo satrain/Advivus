@@ -7,7 +7,7 @@
                                 Get started with Advivus today
                             </h6>
 
-                            <a href="contact.html">
+                            <a href="/contact/">
                                 Contact Us
                             </a>
                         </div>
@@ -21,25 +21,25 @@
                         <div class="footer__item">
                             <ul>
                                 <li>
-                                    <a href="index.html">
+                                    <a href="<?= home_url() ?>">
                                         HOME
                                     </a>
                                 </li>
 
                                 <li>
-                                    <a href="about-us.html">
+                                    <a href="/about-us/">
                                         ABOUT US
                                     </a>
                                 </li>
 
                                 <li>
-                                    <a href="blog.html">
+                                    <a href="/blog/">
                                         BLOG
                                     </a>
                                 </li>
 
                                 <li>
-                                    <a href="contact.html">
+                                    <a href="/contact/">
                                         CONTACT US
                                     </a>
                                 </li>
